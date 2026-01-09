@@ -1,0 +1,9 @@
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+config.properties
+secrets.env
+target/
+*.log
