@@ -1,0 +1,38 @@
+services:
+  # --- DataBase Service ---
+  db:
+    image: postgres:15-alpine
+    container_name: mistral_db_container
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # --- Backend Spring Boot Service ---
+  backend:
+    build: .
+    container_name: mistral_backend_container
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      logging.level.org.hibernate.SQL: DEBUG
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -15,7 +15,3 @@ Content-Type: application/json
     }
   }
 }
-
-### Explanation of the payload example:
-# 4097 (Temp ID) + 09C4 (2500 -> 25.0°C)
-# 4191 (Vent ID) + 0032 (50 -> 5.0 km/h)
