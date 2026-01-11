@@ -1,4 +1,4 @@
-package com.example.mistraltracker;
+package com.mistraltracker.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MistralTrackerApplication {
 
     public static void main(String[] args) {
-        // C'est cette ligne qui démarre tout le serveur (Tomcat)
         SpringApplication.run(MistralTrackerApplication.class, args);
     }
 }

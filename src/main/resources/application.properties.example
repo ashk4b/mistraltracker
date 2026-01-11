@@ -1,10 +1,15 @@
+# Server configuration
 server.port=8080
 
-# Config Database
-spring.datasource.url=jdbc:postgresql://localhost:5432/mistral_db
+# Database configuration
+# "mistral_db" is the name of the database
+spring.datasource.url=jdbc:postgresql://localhost:5432/mistraltr_db
 spring.datasource.username=postgres
 spring.datasource.password=password
 spring.datasource.driver-class-name=org.postgresql.Driver
 
+# JPA Configuration (Hibernate)
+# "update" let Java create automatically the tables on the database
 spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect

@@ -1,4 +1,4 @@
-package com.example.mistraltracker.dto;
+package com.mistraltracker.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
