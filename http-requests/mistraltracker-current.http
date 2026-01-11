@@ -1,0 +1,2 @@
+GET http://localhost:8080/api/mistraltracker/current
+Accept: application/json

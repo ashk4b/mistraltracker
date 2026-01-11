@@ -1,4 +1,4 @@
-package com.mistraltracker.application;
+package com.mistraltracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

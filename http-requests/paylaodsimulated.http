@@ -1,0 +1,21 @@
+POST http://localhost:8080/api/data
+Content-Type: application/json
+
+{
+  "id": "msg-full-simulation-le",
+  "value": {
+    "payload": "4A00386300004B007D0000004098A21741933B01419400000000409988130000"
+  },
+  "metadata": {
+    "network": {
+      "lora": {
+        "devEUI": "SIMULATED_DEVICE",
+        "port": 3
+      }
+    }
+  }
+}
+
+### Explanation of the payload example:
+# 4097 (Temp ID) + 09C4 (2500 -> 25.0°C)
+# 4191 (Vent ID) + 0032 (50 -> 5.0 km/h)

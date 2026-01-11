@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/weather")
+@RequestMapping("/api/data")
 @Slf4j
 @RequiredArgsConstructor
-public class NgrokController {
+public class DataController {
 
     private final DataProcessingService dataProcessingService;
 
