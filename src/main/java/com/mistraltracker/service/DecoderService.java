@@ -5,12 +5,11 @@ import com.mistraltracker.model.WeatherData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import com.mistraltracker.repository.WeatherDataRepository;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.time.LocalDateTime;
 import java.util.HexFormat;
-import java.util.List;
 
 @Service
 @Slf4j
@@ -29,8 +28,6 @@ public class DecoderService {
     private static final int ID_WIND_ALT = 0x4B00;
     private static final int ID_BATTERY  = 0x4C00;
     private static final int ID_STATUS_UNK = 0xB000;
-
-    private final WeatherDataRepository repository;
 
     public WeatherData decoder(LiveObjectsMessage message) {
         WeatherData data = new WeatherData();
@@ -106,54 +103,38 @@ public class DecoderService {
                         break;
                 }
             }
-            scoreFogCalculation(data);
-            scoreUvCalculation(data);
+            mistralScoreCalculation(data);
         } catch (Exception e) {
             log.error("Decoding error", e);
         }
         return data;
     }
 
-    public void scoreFogCalculation (WeatherData data) {
+    public void mistralScoreCalculation (WeatherData data) {
+        double mistralScore = 100.0;
         Double temperature = data.getTemperature();
-        Double humidity = data.getHumidity();
+        Double wind = data.getWindSpeed();
+        Double rain = data.getRainLevel();
 
-        double lambda = Math.log(humidity)/100 + (17.62 * temperature)/(243.12 + temperature);
-        double td = (243.12 * lambda)/(17.62 - lambda);
-        double delta = temperature - td;
+        if(temperature == null) temperature = 20.0;
+        if(wind == null) wind = 5.0;
+        if(rain == null) rain = 0.0;
 
-        if (delta < 0.5) {
-            data.setIsFogOk(true);
-        } else if (delta > 3) {
-            data.setIsFogOk(false);
+        if(rain > 0.5) {
+            data.setMistralScore(0.0);
+            data.setIsTerrasseOk(false);
+            return;
         }
-    }
 
-    public void scoreRainCalculation (WeatherData data) {
+        if (temperature < 15) mistralScore -= (15 - temperature) * 5;
+        if (temperature > 30) mistralScore -= (temperature - 30) * 4;
 
-    }
+        if (wind > 20) mistralScore -= (wind - 20) * 2;
+        if (wind > 50) mistralScore -= 30;
 
-    public void scoreUvCalculation (WeatherData data) {
-        Double lightIntensity = data.getLightIntensity();
-        Double uvIntensity = data.getUvIntensity();
-        List<WeatherData> previousData = repository.findTop10ByOrderByTimestampDesc();
-        Double previousUvIntensity = previousData.get(0).getUvIntensity();
+        mistralScore = Math.max(0, Math.min(100, mistralScore));
 
-        double delta = 60;
-        double uvRate = (uvIntensity - previousUvIntensity) / delta;
-        double sunFactor = Math.log10(lightIntensity + 1.0)/5.0;
-        double nextUv = uvIntensity + uvRate * delta * sunFactor;
-
-        if (nextUv > 8) {
-            data.setIsUvOk(false);
-        } else {
-            data.setIsUvOk(true);
-        }
-    }
-
-    public void scoreWindCalculation (WeatherData data) {
-        Double windSpeed = data.getWindSpeed();
-        List<WeatherData> previousData = repository.findTop10ByOrderByTimestampDesc();
-        Double previousWindSpeed = previousData.get(0).getWindSpeed();
+        data.setMistralScore(mistralScore);
+        data.setIsTerrasseOk(mistralScore > 60);
     }
 }

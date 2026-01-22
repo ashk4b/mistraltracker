@@ -26,10 +26,7 @@ public class WeatherData {
     private Double rainLevel;
     private Double uvIntensity;
     private Double mistralScore;
-    private Boolean isFogOk;
-    private Boolean isUvOk;
-    private Boolean isWindOk;
-    private Boolean isRainOk;
+    private Boolean isTerrasseOk;
     private String deviceEui;
     private Integer batteryLevel;
 }
