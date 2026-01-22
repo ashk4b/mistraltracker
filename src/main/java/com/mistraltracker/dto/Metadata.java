@@ -20,5 +20,6 @@ public class Metadata {
         private String devEUI;
         private Integer signalQuality;
         private Integer signalNoiseRatio;
+        private Integer port;
     }
 }

@@ -25,8 +25,15 @@ public class WeatherData {
     private Double lightIntensity;
     private Double rainLevel;
     private Double uvIntensity;
-    private Double mistralScore;
-    private Boolean isTerrasseOk;
+    private Double pressure;
     private String deviceEui;
     private Integer batteryLevel;
+    private Double rainScore;
+    private Double windScore;
+    private Double uvScore;
+    private Double fogScore;
+    private boolean goodForWaterSports;
+    private boolean goodForSwimming;
+    private boolean goodForFishing;
+    private boolean goodForBoating;
 }
