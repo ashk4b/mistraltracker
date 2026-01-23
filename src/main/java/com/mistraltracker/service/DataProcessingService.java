@@ -57,7 +57,7 @@ public class DataProcessingService {
     }
 
     public void compareNewDataWithLast(WeatherData newData, WeatherData oldData) {
-        if (newData.getTemperature() == null) newData.setTemperature(oldData.getTemperature());
+        if (newData.getTemperature() == null || newData.getTemperature() > 45) newData.setTemperature(oldData.getTemperature());
         if (newData.getHumidity() == null) newData.setHumidity(oldData.getHumidity());
         if (newData.getWindSpeed() == null) newData.setWindSpeed(oldData.getWindSpeed());
         if (newData.getWindDirection() == null) newData.setWindDirection(oldData.getWindDirection());
