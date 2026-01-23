@@ -492,9 +492,22 @@
 
     function simulateStorm() {
         const fakeData = { ...previousState, windSpeed: 85.0, rainLevel: 12.0, goodForBoating: false, goodForFishing: false, goodForSwimming: false, goodForWaterSports: false, timestamp: new Date().toISOString() };
+
+        // 1. Mise à jour visuelle (comme avant)
         updateDashboard(fakeData);
         addNotification("⚠️ ALERTE TEMPÊTE SIMULÉE.", "danger");
         previousState = fakeData;
+
+        // 2. Appel au Backend pour envoyer le mail (NOUVEAU)
+        fetch('/api/mistraltracker/alert', { method: 'POST' })
+            .then(response => {
+                if(response.ok) {
+                    addNotification("📧 Mail d'alerte envoyé aux autorités.", "success");
+                } else {
+                    console.error("Erreur envoi mail");
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     function clearNotifications() { localStorage.removeItem('notifications'); document.getElementById('notif-list').innerHTML = ''; document.getElementById('notif-count').style.display = 'none'; }
