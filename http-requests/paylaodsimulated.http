@@ -1,4 +1,4 @@
-POST http://localhost:8080/api/data
+POST http://mistraltracker-backend-production.up.railway.app/api/data
 Content-Type: application/json
 
 {
