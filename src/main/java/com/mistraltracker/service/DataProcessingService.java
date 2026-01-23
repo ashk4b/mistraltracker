@@ -63,7 +63,7 @@ public class DataProcessingService {
         if (newData.getWindDirection() == null) newData.setWindDirection(oldData.getWindDirection());
         if (newData.getRainLevel() == null) newData.setRainLevel(oldData.getRainLevel());
         if (newData.getBatteryLevel() == null) newData.setBatteryLevel(oldData.getBatteryLevel());
-        if (newData.getLightIntensity() == null) newData.setLightIntensity(oldData.getLightIntensity());
+        if (newData.getLightIntensity() == null || newData.getLightIntensity() > 600) newData.setLightIntensity(oldData.getLightIntensity());
         if (newData.getUvIntensity() == null) newData.setUvIntensity(oldData.getUvIntensity());
     }
 }
