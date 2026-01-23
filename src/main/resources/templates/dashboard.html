@@ -17,7 +17,7 @@
             --main-bg-dark: #121212;
             --footer-bg-light: #e9ecef;
             --footer-bg-dark: #1a1d20;
-            --nav-dark-blue: #0a192f; /* Bleu foncé demandé */
+            --nav-dark-blue: #0a192f;
         }
 
         body {
@@ -33,17 +33,10 @@
             background-color: var(--main-bg-dark);
         }
 
-        /* Navbar Customisation */
-        .navbar {
-            transition: background-color 0.3s ease;
-        }
-
-        /* En mode dark, on force le bleu foncé au lieu du gris */
         [data-bs-theme="dark"] .navbar {
             background-color: var(--nav-dark-blue) !important;
         }
 
-        /* Cartes modernes */
         .weather-card {
             border: none;
             border-radius: 16px;
@@ -69,25 +62,14 @@
             font-size: 1.5rem;
         }
 
-        /* Indicateurs d'activité */
-        .activity-card {
-            cursor: default;
-            position: relative;
-        }
-
-        /* Notification badge */
-        .notification-btn {
-            position: relative;
-        }
+        .notification-btn { position: relative; }
         .notification-badge {
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 0; right: 0;
             transform: translate(50%, -25%);
             font-size: 0.65rem;
         }
 
-        /* Inversion intelligente des couleurs de la carte en mode sombre */
         [data-bs-theme="dark"] .leaflet-layer,
         [data-bs-theme="dark"] .leaflet-control-zoom-in,
         [data-bs-theme="dark"] .leaflet-control-zoom-out,
@@ -97,19 +79,11 @@
 
         [data-bs-theme="dark"] .leaflet-popup-content-wrapper,
         [data-bs-theme="dark"] .leaflet-popup-tip {
-            background-color: #2c3034;
-            color: #fff;
+            background-color: #2c3034; color: #fff;
         }
 
-        /* Footer Style */
-        footer {
-            background-color: var(--footer-bg-light);
-            margin-top: auto; /* Pousse le footer en bas */
-        }
-        [data-bs-theme="dark"] footer {
-            background-color: var(--footer-bg-dark);
-            border-top: 1px solid #2c3034;
-        }
+        footer { background-color: var(--footer-bg-light); margin-top: auto; }
+        [data-bs-theme="dark"] footer { background-color: var(--footer-bg-dark); border-top: 1px solid #2c3034; }
     </style>
 </head>
 <body>
@@ -136,7 +110,6 @@
 </nav>
 
 <div class="container py-4">
-
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2 class="fw-bold mb-0">Plages du Prado</h2>
@@ -270,50 +243,36 @@
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
                 <h5 class="fw-bold mb-3"><i class="fa-solid fa-wind me-2"></i>MistralTracker</h5>
-                <p class="text-muted small">
-                    Solution intelligente de surveillance et d'alerte météo hyper-locale pour les zones côtières et maritimes.
-                    Sécurisez vos activités nautiques grâce à des données en temps réel.
-                </p>
+                <p class="text-muted small">Solution intelligente de surveillance et d'alerte météo hyper-locale.</p>
                 <div class="d-flex gap-3">
                     <a href="#" class="text-decoration-none text-muted"><i class="fa-brands fa-linkedin fa-lg"></i></a>
-                    <a href="#" class="text-decoration-none text-muted"><i class="fa-brands fa-twitter fa-lg"></i></a>
                     <a href="#" class="text-decoration-none text-muted"><i class="fa-brands fa-github fa-lg"></i></a>
                 </div>
             </div>
-
             <div class="col-lg-4 col-md-6">
                 <h6 class="fw-bold text-uppercase mb-3">Contact & Support</h6>
                 <ul class="list-unstyled text-muted small">
                     <li class="mb-2"><i class="fa-solid fa-envelope me-2"></i> support@mistraltracker.com</li>
                     <li class="mb-2"><i class="fa-solid fa-phone me-2"></i> +33 4 91 00 00 00</li>
-                    <li class="mb-2"><i class="fa-solid fa-location-dot me-2"></i> Marseille, France</li>
                 </ul>
             </div>
-
             <div class="col-lg-4 col-md-12">
                 <h6 class="fw-bold text-uppercase mb-3">Nos Offres</h6>
                 <ul class="list-group list-group-flush rounded-3 small">
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                        Loisirs & Petites structures
-                        <span class="badge bg-primary rounded-pill">35 €/mois</span>
+                        Loisirs <span class="badge bg-primary rounded-pill">35 €/mois</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                        Collectivités & Plages
-                        <span class="badge bg-primary rounded-pill">70 €/mois</span>
+                        Collectivités <span class="badge bg-primary rounded-pill">70 €/mois</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-                        Ports & Professionnels
-                        <span class="badge bg-primary rounded-pill">110 €/mois</span>
+                        Professionnels <span class="badge bg-primary rounded-pill">110 €/mois</span>
                     </li>
                 </ul>
-                <div class="mt-2 text-end">
-                    <small class="text-muted fst-italic">* Hébergement et maintenance inclus</small>
-                </div>
             </div>
         </div>
-
         <div class="border-top mt-4 pt-3 text-center text-muted small">
-            <p class="mb-0">&copy; 2026 MistralTracker. Tous droits réservés. <a href="#" class="text-decoration-none ms-2">Mentions légales</a></p>
+            <p class="mb-0">&copy; 2026 MistralTracker. Tous droits réservés.</p>
         </div>
     </div>
 </footer>
@@ -324,10 +283,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-0">
+        <div class="p-3 bg-warning bg-opacity-10 border-bottom">
+            <button onclick="simulateStorm()" class="btn btn-warning w-100 btn-sm fw-bold">
+                <i class="fa-solid fa-bolt me-2"></i>Simuler Tempête (Démo)
+            </button>
+        </div>
         <div class="list-group list-group-flush" id="notif-list">
-            <div class="text-center p-4 text-muted">
-                <small>Aucune notification récente.</small>
-            </div>
+            <div class="text-center p-4 text-muted"><small>Aucune notification récente.</small></div>
         </div>
     </div>
     <div class="p-3 border-top">
@@ -342,7 +304,7 @@
     const API_URL = '/api/mistraltracker/current';
     let previousState = {};
 
-    // --- 1. Gestion du Thème (Dark/Light) ---
+    // Theme Logic
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     const iconTheme = themeToggleBtn.querySelector('i');
@@ -361,46 +323,29 @@
         iconTheme.className = theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
     }
 
-    // --- 2. Initialisation Carte (Plage du Prado) ---
-    // Coordonnées Plage du Prado Sud (Sable)
+    // Map Logic
     const stationLat = 43.2515;
     const stationLng = 5.3745;
-
     const map = L.map('map').setView([stationLat, stationLng], 15);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(map);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    // --- ICONE TOUR/ANTENNE ---
     const weatherIcon = L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/4052/4052984.png', // Image Tour/Antenne
-        iconSize: [45, 45],
-        iconAnchor: [22, 45],
-        popupAnchor: [0, -40]
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/4052/4052984.png',
+        iconSize: [45, 45], iconAnchor: [22, 45], popupAnchor: [0, -40]
     });
-
     const marker = L.marker([stationLat, stationLng], {icon: weatherIcon}).addTo(map);
     marker.bindPopup("<b>Chargement...</b>");
-
     setTimeout(() => { map.invalidateSize(); }, 500);
 
-    // --- 3. Arrondi de l'heure ---
+    // Notification Logic
     function getRoundedTime() {
         const now = new Date();
-        const minutes = now.getMinutes();
-        const roundedMinutes = Math.round(minutes / 10) * 10;
-        now.setMinutes(roundedMinutes);
-        now.setSeconds(0);
+        now.setMinutes(Math.round(now.getMinutes() / 10) * 10);
         return now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
     }
 
-    // --- 4. Gestion des Notifications ---
     function addNotification(message, type = 'info') {
         const list = document.getElementById('notif-list');
-        const time = getRoundedTime();
-
         let iconClass = 'text-primary fa-circle-info';
         if (type === 'success') iconClass = 'text-success fa-check-circle';
         if (type === 'danger') iconClass = 'text-danger fa-triangle-exclamation';
@@ -410,10 +355,9 @@
                 <i class="fa-solid ${iconClass} fs-5 mt-1"></i>
                 <div class="d-flex gap-2 w-100 justify-content-between">
                     <div><p class="mb-0 opacity-75">${message}</p></div>
-                    <small class="opacity-50 text-nowrap">${time}</small>
+                    <small class="opacity-50 text-nowrap">${getRoundedTime()}</small>
                 </div>
-            </div>
-        `;
+            </div>`;
 
         if (list.innerText.includes('Aucune notification')) list.innerHTML = '';
         list.insertAdjacentHTML('afterbegin', item);
@@ -421,52 +365,42 @@
         updateNotifBadge();
     }
 
-    function saveNotifications() {
-        localStorage.setItem('notifications', document.getElementById('notif-list').innerHTML);
-    }
-
+    function saveNotifications() { localStorage.setItem('notifications', document.getElementById('notif-list').innerHTML); }
     function loadNotifications() {
         const saved = localStorage.getItem('notifications');
         if (saved) document.getElementById('notif-list').innerHTML = saved;
     }
-
     function clearNotifications() {
         localStorage.removeItem('notifications');
         document.getElementById('notif-list').innerHTML = '<div class="text-center p-4 text-muted"><small>Aucune notification récente.</small></div>';
         document.getElementById('notif-count').style.display = 'none';
     }
-
     function updateNotifBadge() {
         const badge = document.getElementById('notif-count');
         badge.style.display = 'inline-block';
         badge.innerText = 'New';
     }
 
-    // --- 5. Récupération des données ---
+    // Data Fetching
     async function fetchData() {
         const spinner = document.getElementById('loading-spinner');
         spinner.style.display = 'block';
-
         try {
             const response = await fetch(API_URL);
             if (!response.ok) throw new Error('Erreur API');
             const data = await response.json();
-
             updateDashboard(data);
             checkChangesAndNotify(data);
-
             previousState = data;
         } catch (error) {
             console.error(error);
             document.getElementById('last-update-text').innerText = "Erreur de connexion";
             document.getElementById('last-update-text').className = "text-danger small mb-0";
-        } finally {
-            spinner.style.display = 'none';
-        }
+        } finally { spinner.style.display = 'none'; }
     }
 
     function updateDashboard(data) {
-        const dateObj = new Date(data.timestamp);
+        const dateObj = new Date(data.timestamp || Date.now()); // Fallback pour simu
         const timeStr = dateObj.toLocaleTimeString();
         document.getElementById('last-update-text').innerText = "Dernier relevé : " + timeStr;
 
@@ -490,7 +424,6 @@
         document.getElementById('uv-desc').innerText = uvDesc;
 
         document.getElementById('prog-hum').style.width = (data.humidity || 0) + "%";
-
         let uvPercent = Math.min((uvVal / 11) * 100, 100);
         document.getElementById('prog-uv').style.width = uvPercent + "%";
 
@@ -503,7 +436,6 @@
         setActivity('swimming', data.goodForSwimming);
         setActivity('sport', data.goodForWaterSports);
 
-        // --- MISE A JOUR DE LA POPUP CARTE ---
         const popupContent = `
             <div class="text-center">
                 <h6 class="fw-bold mb-1">Station Prado</h6>
@@ -515,35 +447,35 @@
                      <span class="text-muted">Dernier signal:</span><br>
                      <b>${timeStr}</b>
                 </div>
-            </div>
-        `;
+            </div>`;
         marker.setPopupContent(popupContent);
     }
 
-    function safeText(id, val) {
-        document.getElementById(id).innerText = val !== null ? val : '--';
-    }
+    function safeText(id, val) { document.getElementById(id).innerText = val !== null ? val : '--'; }
 
     function setActivity(id, isGood) {
         const badge = document.getElementById('badge-' + id);
         const icon = document.querySelector(`#card-${id} i`);
-
         badge.className = 'badge rounded-pill';
         icon.className = icon.className.replace('text-success', 'text-secondary').replace('text-danger', 'text-secondary');
 
         if (isGood) {
-            badge.classList.add('bg-success');
-            badge.innerText = 'Favorable';
-            icon.classList.remove('text-secondary');
-            icon.classList.add('text-success');
+            badge.classList.add('bg-success'); badge.innerText = 'Favorable';
+            icon.classList.remove('text-secondary'); icon.classList.add('text-success');
         } else {
-            badge.classList.add('bg-danger');
-            badge.innerText = 'Défavorable';
+            badge.classList.add('bg-danger'); badge.innerText = 'Défavorable';
         }
     }
 
     function checkChangesAndNotify(data) {
-        if (!previousState.id) return;
+        // Au premier chargement (previousState vide), on notifie l'état actuel si critique
+        const isFirstLoad = !previousState.id;
+
+        if (isFirstLoad) {
+            addNotification("Connexion établie avec la station Prado.", "info");
+            if (data.windSpeed > 50) addNotification("⚠️ Attention: Vent fort détecté au démarrage !", "danger");
+            return;
+        }
 
         if (data.goodForFishing !== previousState.goodForFishing) {
             const msg = data.goodForFishing ? "La pêche est devenue favorable ! 🎣" : "Conditions de pêche dégradées.";
@@ -553,15 +485,31 @@
             const msg = data.goodForBoating ? "Conditions idéales pour le bateau ⛵" : "Attention, vent fort pour le bateau.";
             addNotification(msg, data.goodForBoating ? 'success' : 'danger');
         }
+        // Alerte Tempête
         if (data.windSpeed > 50 && previousState.windSpeed <= 50) {
             addNotification("Alerte Tempête : Vent > 50km/h !", "danger");
         }
     }
 
+    // --- FONCTION DE SIMULATION POUR LE JURY ---
+    function simulateStorm() {
+        const fakeData = {
+            ...previousState, // Copie des données actuelles
+            windSpeed: 85.0, // Force le vent à 85
+            goodForBoating: false, // Force défavorable
+            goodForWaterSports: true, // Suppose bon pour la planche à voile
+            timestamp: new Date().toISOString()
+        };
+        // Injection des fausses données
+        updateDashboard(fakeData);
+        checkChangesAndNotify(fakeData);
+        // On sauvegarde le fake state pour que la prochaine vraie notif détecte le "retour au calme"
+        previousState = fakeData;
+    }
+
     loadNotifications();
     fetchData();
     setInterval(fetchData, 30000);
-
 </script>
 </body>
 </html>
